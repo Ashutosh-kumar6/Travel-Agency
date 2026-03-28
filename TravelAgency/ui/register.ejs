@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Travel Agency</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">✈️ TRAVEL AGENCY</div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/destination">Destinations</a></li>
+                <li><a href="/services">Services</a></li>
+                <li><a href="/food">Food</a></li>
+                <li><a href="/rental">Rentals</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/contact">Contact</a></li>
+                <li><a href="/bookYourTrip">Book Your Trip</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- PAGE CONTENT -->
+    <div class="page-container register-page" style="display: flex; align-items: center; justify-content: center; min-height: 80vh;">
+        <div class="card" style="max-width: 450px; width: 100%;">
+            <div style="padding: 2rem;">
+                <h1 style="text-align: center; color: var(--accent); margin-bottom: 1rem;">Join Travel Agency</h1>
+                <p style="text-align: center; color: var(--text-muted); margin-bottom: 2rem;">Begin your journey to luxury travel experiences</p>
+                
+                <form>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+                        <div class="form-group" style="margin-bottom: 0;">
+                            <label>First Name</label>
+                            <input type="text" placeholder="John" required>
+                        </div>
+                        <div class="form-group" style="margin-bottom: 0;">
+                            <label>Last Name</label>
+                            <input type="text" placeholder="Doe" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" placeholder="your@email.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="tel" placeholder="+1 (555) 000-0000" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" placeholder="••••••••" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Confirm Password</label>
+                        <input type="password" placeholder="••••••••" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Preferred Destination Type</label>
+                        <select required>
+                            <option value="">Select your preference</option>
+                            <option value="beach">Beach & Island</option>
+                            <option value="mountain">Mountain & Adventure</option>
+                            <option value="city">City & Culture</option>
+                            <option value="luxury">Luxury Resort</option>
+                            <option value="all">All Types</option>
+                        </select>
+                    </div>
+
+                    <label style="display: flex; align-items: flex-start; gap: 0.5rem; color: var(--text-muted); margin-bottom: 1.5rem; cursor: pointer;">
+                        <input type="checkbox" required style="width: 18px; height: 18px; margin-top: 2px;">
+                        <span>I agree to the <a href="#" style="color: var(--accent);">Terms & Conditions</a> and <a href="#" style="color: var(--accent);">Privacy Policy</a></span>
+                    </label>
+
+                    <button class="btn btn-primary btn-large" type="submit" style="width: 100%; margin-bottom: 1rem;">Create Account</button>
+
+                    <p style="text-align: center; color: var(--text-muted);">
+                        Already have an account? <a href="/login" style="color: var(--accent); text-decoration: none; font-weight: 600;">Login</a>
+                    </p>
+                </form>
+
+                <div style="margin-top: 2rem; border-top: 1px solid rgba(251, 191, 36, 0.1); padding-top: 1.5rem;">
+                    <p style="text-align: center; color: var(--text-muted); margin-bottom: 1rem;">Or sign up with</p>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                        <button class="card-button" style="padding: 0.8rem;">Google</button>
+                        <button class="card-button" style="padding: 0.8rem;">Apple</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-bottom" style="border-top: 1px solid rgba(251, 191, 36, 0.1); padding-top: 2rem;">
+            <p>&copy; 2026 Travel Agency. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="/script.js"></script>
+</body>
+</html>
