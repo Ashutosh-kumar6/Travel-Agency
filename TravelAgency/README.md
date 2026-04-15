@@ -2,6 +2,16 @@
 
 A sophisticated, premium travel agency website built with Express.js and EJS. Featuring luxury design, modern UI/UX, and easy-to-use interface.
 
+## Backend Update
+
+The backend now connects directly to local MongoDB by default:
+
+```txt
+mongodb://127.0.0.1:27017/travelagency
+```
+
+`MONGO_URI` is no longer required in `.env`. Use only `PORT`, `JWT_SECRET`, and `SESSION_SECRET` unless you want to override the database connection manually.
+
 ## 🎨 Design Features
 
 ### **Premium Aesthetic**
@@ -240,3 +250,6 @@ This premium UI is ready for commercial use. Customize it for your travel busine
 
 For updates and support, customize the `/contact` page with your actual contact details.
 
+## Admin page 
+only admin can access it is a unique password only you can see and whom can control the website the access
+/admin/Ashu2406/login
