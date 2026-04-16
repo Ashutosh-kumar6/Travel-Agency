@@ -36,7 +36,9 @@ const seedDestinations = async () => {
 
     if (destinationCount === 0) {
         await Destination.insertMany(defaultDestinations);
-        console.log('Default destinations seeded.');
+        console.log('✓ Default destinations seeded.');
+    } else {
+        console.log(`✓ Destinations already exist (${destinationCount} found).`);
     }
 };
 

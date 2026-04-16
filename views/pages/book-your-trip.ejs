@@ -19,7 +19,7 @@
                                 <select id="destination" name="destination" required>
                                     <option value="">Select a destination</option>
                                     <% destinations.forEach((item) => { %>
-                                        <option value="<%= item._id %>"><%= item.name %> - <%= item.location %> ($<%= item.price %>)</option>
+                                        <option value="<%= item._id %>"><%= item.name %> - <%= item.location %> (<%= formatCurrency(item.price) %>)</option>
                                     <% }) %>
                                 </select>
                             </div>
@@ -41,7 +41,7 @@
                             <div class="simple-list-item">
                                 <strong><%= item.name %></strong>
                                 <span><%= item.location %></span>
-                                <span>$<%= item.price %></span>
+                                <span><%= formatCurrency(item.price) %></span>
                             </div>
                         <% }) %>
                     </div>

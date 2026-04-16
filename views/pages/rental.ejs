@@ -1,16 +1,7 @@
-<section class="search-bar-wrapper">
-    <div class="search-bar-container">
-        <span class="search-icon">Rental</span>
-        <input type="text" class="search-input" placeholder="Search luxury rentals and transport options...">
-        <button class="search-btn-icon" type="button">Go</button>
-    </div>
-</section>
-
-<div class="page-container rental-page">
-    <h1 class="page-title">Rental Options</h1>
-    <div class="cards-grid">
-        <div class="card"><div class="card-content"><h3>Luxury Cars</h3><p>Reserve premium vehicles for city travel, long drives, and executive transport.</p></div></div>
-        <div class="card"><div class="card-content"><h3>Private Yachts</h3><p>Upgrade beach destinations with curated yacht experiences and premium day charters.</p></div></div>
-        <div class="card"><div class="card-content"><h3>Private Jets</h3><p>Add high-end transportation for fast, flexible travel planning.</p></div></div>
-    </div>
-</div>
+<%- include('catalog', {
+    title,
+    section: 'rental',
+    heading: 'Rental Options',
+    searchPlaceholder: 'Search luxury rentals and transport options...',
+    items
+}) %>

@@ -1,17 +1,9 @@
 const mongoose = require('mongoose');
-const dotenv = require('dotenv');
-
-dotenv.config();
+const { mongoUri } = require('./env');
 
 const connectDB = async () => {
-    const mongoUri = process.env.MONGO_URI;
-
-    if (!mongoUri) {
-        throw new Error('MONGO_URI is missing in the environment variables.');
-    }
-
     await mongoose.connect(mongoUri);
-    console.log('MongoDB connected successfully.');
+    console.log(`MongoDB connected successfully: ${mongoUri}`);
 };
 
 module.exports = connectDB;

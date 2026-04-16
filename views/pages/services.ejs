@@ -1,16 +1,7 @@
-<section class="search-bar-wrapper">
-    <div class="search-bar-container">
-        <span class="search-icon">Services</span>
-        <input type="text" class="search-input" placeholder="Search premium travel services...">
-        <button class="search-btn-icon" type="button">Go</button>
-    </div>
-</section>
-
-<div class="page-container services-page">
-    <h1 class="page-title">Premium Services</h1>
-    <div class="cards-grid">
-        <div class="card"><div class="card-content"><h3>Flight Planning</h3><p>Luxury and business-friendly flight arrangements tailored to your destination and schedule.</p></div></div>
-        <div class="card"><div class="card-content"><h3>Hotel Booking</h3><p>Carefully selected stays with convenience, comfort, and premium amenities.</p></div></div>
-        <div class="card"><div class="card-content"><h3>Custom Itineraries</h3><p>Flexible travel plans built around adventure, leisure, food, or family experiences.</p></div></div>
-    </div>
-</div>
+<%- include('catalog', {
+    title,
+    section: 'service',
+    heading: 'Premium Services',
+    searchPlaceholder: 'Search premium travel services...',
+    items
+}) %>

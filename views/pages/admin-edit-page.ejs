@@ -1,0 +1,46 @@
+<div class="admin-panel-page">
+    <div class="admin-page-header">
+        <h1>Edit Page</h1>
+        <a href="/admin/Ashu2406/dashboard" class="btn btn-secondary">Back</a>
+    </div>
+
+    <div class="card">
+        <div class="card-content">
+            <form action="/admin/Ashu2406/pages/<%= page._id %>?_method=PATCH" method="POST">
+                <div class="content-grid compact-grid">
+                    <div class="form-group">
+                        <label for="pageTitle">Title</label>
+                        <input id="pageTitle" type="text" name="title" value="<%= page.title %>" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="pageSlug">Slug</label>
+                        <input id="pageSlug" type="text" name="slug" value="<%= page.slug %>" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="pageHeroTitle">Hero Title</label>
+                        <input id="pageHeroTitle" type="text" name="heroTitle" value="<%= page.heroTitle %>" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="pageSummary">Summary</label>
+                        <input id="pageSummary" type="text" name="summary" value="<%= page.summary %>">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="pageContent">Content</label>
+                    <textarea id="pageContent" name="content" class="admin-textarea" required><%= page.content %></textarea>
+                </div>
+                <div class="action-row">
+                    <label class="admin-checkbox">
+                        <input type="checkbox" name="showInNavbar" <%= page.showInNavbar ? 'checked' : '' %>>
+                        <span>Show in navbar</span>
+                    </label>
+                    <label class="admin-checkbox">
+                        <input type="checkbox" name="isPublished" <%= page.isPublished ? 'checked' : '' %>>
+                        <span>Published</span>
+                    </label>
+                </div>
+                <button class="btn btn-primary" type="submit">Save Page</button>
+            </form>
+        </div>
+    </div>
+</div>

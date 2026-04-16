@@ -12,7 +12,7 @@
         <div class="card-content">
             <h1 class="page-title"><%= destination.name %></h1>
             <p><strong>Location:</strong> <%= destination.location %></p>
-            <p><strong>Price:</strong> $<%= destination.price %></p>
+            <p><strong>Price:</strong> <%= formatCurrency(destination.price) %></p>
             <p><%= destination.description %></p>
             <div class="hero-buttons">
                 <a href="/book-your-trip" class="btn btn-primary">Book This Destination</a>

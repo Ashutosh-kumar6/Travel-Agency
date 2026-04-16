@@ -50,7 +50,7 @@
                     <h3><%= destination.name %></h3>
                     <p><%= destination.description %></p>
                     <div class="card-footer">
-                        <span class="card-price">$<%= destination.price %></span>
+                        <span class="card-price"><%= formatCurrency(destination.price) %></span>
                         <a href="/destinations/<%= destination._id %>" class="card-button">View Details</a>
                     </div>
                 </div>

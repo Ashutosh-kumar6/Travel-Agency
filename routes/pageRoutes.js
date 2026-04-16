@@ -3,6 +3,7 @@ const {
     renderHomePage,
     renderBookingPage,
     renderAboutPage,
+    renderManagedPage,
     renderServicesPage,
     renderFoodPage,
     renderRentalPage,
@@ -23,5 +24,6 @@ router.get('/login', renderLoginPage);
 router.get('/register', renderRegisterPage);
 router.get('/bookYourTrip', renderBookingPage);
 router.get('/book-your-trip', renderBookingPage);
+router.get('/pages/:slug', renderManagedPage);
 
 module.exports = router;

@@ -1,0 +1,251 @@
+<div class="admin-panel-page">
+    <div class="admin-page-header">
+        <div>
+            <p class="admin-kicker">Separate Admin Panel</p>
+            <h1>Dashboard Control Center</h1>
+        </div>
+    </div>
+
+    <section class="admin-grid admin-stats">
+        <div class="card"><div class="card-content"><h3>Pending Bookings</h3><p class="admin-stat"><%= pendingBookings.length %></p></div></div>
+        <div class="card"><div class="card-content"><h3>Destinations</h3><p class="admin-stat"><%= destinations.length %></p></div></div>
+        <div class="card"><div class="card-content"><h3>Catalog Items</h3><p class="admin-stat"><%= catalogItems.length %></p></div></div>
+        <div class="card"><div class="card-content"><h3>Pages</h3><p class="admin-stat"><%= pages.length %></p></div></div>
+    </section>
+
+    <section class="admin-grid" id="bookings">
+        <div class="card">
+            <div class="card-content">
+                <h3>Pending Bookings</h3>
+                <% if (!pendingBookings.length) { %>
+                    <p>No pending bookings right now.</p>
+                <% } else { %>
+                    <div class="simple-list">
+                        <% pendingBookings.forEach((booking) => { %>
+                            <div class="simple-list-item">
+                                <strong><%= booking.destination ? booking.destination.name : 'Deleted Destination' %></strong>
+                                <span>User: <%= booking.user ? booking.user.name : 'Unknown User' %></span>
+                                <span>Date: <%= new Date(booking.date).toDateString() %></span>
+                                <div class="action-row">
+                                    <form action="/admin/Ashu2406/bookings/<%= booking._id %>/status?_method=PATCH" method="POST">
+                                        <input type="hidden" name="status" value="confirmed">
+                                        <button class="btn btn-primary" type="submit">Approve</button>
+                                    </form>
+                                    <form action="/admin/Ashu2406/bookings/<%= booking._id %>/status?_method=PATCH" method="POST">
+                                        <input type="hidden" name="status" value="cancelled">
+                                        <button class="btn btn-secondary" type="submit">Reject</button>
+                                    </form>
+                                </div>
+                            </div>
+                        <% }) %>
+                    </div>
+                <% } %>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <h3>Recent Bookings</h3>
+                <div class="simple-list">
+                    <% allBookings.forEach((booking) => { %>
+                        <div class="simple-list-item">
+                            <strong><%= booking.destination ? booking.destination.name : 'Deleted Destination' %></strong>
+                            <span>User: <%= booking.user ? booking.user.name : 'Unknown User' %></span>
+                            <span>Status: <span class="status-pill"><%= booking.status %></span></span>
+                        </div>
+                    <% }) %>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="admin-grid" id="catalog">
+        <div class="card">
+            <div class="card-content">
+                <h3>Add Food / Service / Rental</h3>
+                <form action="/admin/Ashu2406/items" method="POST">
+                    <div class="content-grid compact-grid">
+                        <div class="form-group">
+                            <label for="catalogSection">Section</label>
+                            <select id="catalogSection" name="section" required>
+                                <option value="food">Food</option>
+                                <option value="service">Service</option>
+                                <option value="rental">Rental</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="catalogTitle">Title</label>
+                            <input id="catalogTitle" type="text" name="title" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="catalogPriceLabel">Price Label</label>
+                            <input id="catalogPriceLabel" type="text" name="priceLabel">
+                        </div>
+                        <div class="form-group">
+                            <label for="catalogImage">Image URL</label>
+                            <input id="catalogImage" type="url" name="image">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="catalogDescription">Description</label>
+                        <textarea id="catalogDescription" name="description" required></textarea>
+                    </div>
+                    <button class="btn btn-primary" type="submit">Add Item</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <h3>Manage Food / Services / Rentals</h3>
+                <div class="simple-list">
+                    <% catalogItems.forEach((item) => { %>
+                        <div class="simple-list-item">
+                            <strong><%= item.title %></strong>
+                            <span>Section: <%= item.section %></span>
+                            <span><%= item.priceLabel ? formatPriceLabel(item.priceLabel) : 'No price label' %></span>
+                            <div class="action-row">
+                                <a href="/admin/Ashu2406/items/<%= item._id %>/edit" class="btn btn-primary">Edit</a>
+                                <form action="/admin/Ashu2406/items/<%= item._id %>?_method=DELETE" method="POST">
+                                    <button class="btn btn-secondary" type="submit">Delete</button>
+                                </form>
+                            </div>
+                        </div>
+                    <% }) %>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="admin-grid" id="pages">
+        <div class="card">
+            <div class="card-content">
+                <h3>Create New Page</h3>
+                <form action="/admin/Ashu2406/pages" method="POST">
+                    <div class="content-grid compact-grid">
+                        <div class="form-group">
+                            <label for="newPageTitle">Title</label>
+                            <input id="newPageTitle" type="text" name="title" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="newPageSlug">Slug</label>
+                            <input id="newPageSlug" type="text" name="slug" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="newPageHeroTitle">Hero Title</label>
+                            <input id="newPageHeroTitle" type="text" name="heroTitle" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="newPageSummary">Summary</label>
+                            <input id="newPageSummary" type="text" name="summary">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="newPageContent">Content</label>
+                        <textarea id="newPageContent" name="content" class="admin-textarea" required></textarea>
+                    </div>
+                    <label class="admin-checkbox">
+                        <input type="checkbox" name="showInNavbar">
+                        <span>Show this page in navbar</span>
+                    </label>
+                    <button class="btn btn-primary" type="submit">Create Page</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <h3>Manage Pages</h3>
+                <div class="simple-list">
+                    <% pages.forEach((page) => { %>
+                        <div class="simple-list-item">
+                            <strong><%= page.title %></strong>
+                            <span>Slug: /pages/<%= page.slug %><%= page.slug === 'about' ? ' (About page also uses this content)' : '' %></span>
+                            <span><%= page.isSystem ? 'System Page' : 'Custom Page' %></span>
+                            <div class="action-row">
+                                <a href="/admin/Ashu2406/pages/<%= page._id %>/edit" class="btn btn-primary">Edit</a>
+                                <% if (!page.isSystem) { %>
+                                    <form action="/admin/Ashu2406/pages/<%= page._id %>?_method=DELETE" method="POST">
+                                        <button class="btn btn-secondary" type="submit">Delete</button>
+                                    </form>
+                                <% } %>
+                            </div>
+                        </div>
+                    <% }) %>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="admin-grid">
+        <div class="card">
+            <div class="card-content">
+                <h3>Add Destination</h3>
+                <form action="/destinations" method="POST">
+                    <div class="content-grid compact-grid">
+                        <div class="form-group">
+                            <label for="dashboardDestinationName">Name</label>
+                            <input id="dashboardDestinationName" type="text" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="dashboardDestinationLocation">Location</label>
+                            <input id="dashboardDestinationLocation" type="text" name="location" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="dashboardDestinationPrice">Price</label>
+                            <input id="dashboardDestinationPrice" type="number" min="0" name="price" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="dashboardDestinationImage">Image URL</label>
+                            <input id="dashboardDestinationImage" type="url" name="image" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="dashboardDestinationDescription">Description</label>
+                        <textarea id="dashboardDestinationDescription" name="description" required></textarea>
+                    </div>
+                    <button class="btn btn-primary" type="submit">Add Destination</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <h3>Manage Destinations</h3>
+                <div class="simple-list">
+                    <% destinations.forEach((destination) => { %>
+                        <div class="simple-list-item">
+                            <strong><%= destination.name %></strong>
+                            <span><%= destination.location %> - <%= formatCurrency(destination.price) %></span>
+                            <div class="action-row">
+                                <a href="/admin/Ashu2406/destinations/<%= destination._id %>/edit" class="btn btn-primary">Edit</a>
+                                <form action="/admin/Ashu2406/destinations/<%= destination._id %>?_method=DELETE" method="POST">
+                                    <button class="btn btn-secondary" type="submit">Delete Destination</button>
+                                </form>
+                            </div>
+                        </div>
+                    <% }) %>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <h3>Recent Contact Messages</h3>
+                <% if (!contacts.length) { %>
+                    <p>No contact messages yet.</p>
+                <% } else { %>
+                    <div class="simple-list">
+                        <% contacts.forEach((contact) => { %>
+                            <div class="simple-list-item">
+                                <strong><%= contact.name %></strong>
+                                <span><%= contact.email %></span>
+                                <span><%= contact.message %></span>
+                            </div>
+                        <% }) %>
+                    </div>
+                <% } %>
+            </div>
+        </div>
+    </section>
+</div>
