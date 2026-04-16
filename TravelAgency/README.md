@@ -4,13 +4,15 @@ A sophisticated, premium travel agency website built with Express.js and EJS. Fe
 
 ## Backend Update
 
-The backend now connects directly to local MongoDB by default:
+The backend is configured for MongoDB Atlas via `MONGO_URI`.
+
+Add this to your `.env` file and replace `your-cluster.mongodb.net` with your actual Atlas cluster host:
 
 ```txt
-mongodb://127.0.0.1:27017/travelagency
+MONGO_URI=mongodb+srv://ashutoshkumar58724_db_user:Ashu2406%40%2420@your-cluster.mongodb.net/travelagency?retryWrites=true&w=majority&appName=Cluster0
 ```
 
-`MONGO_URI` is no longer required in `.env`. Use only `PORT`, `JWT_SECRET`, and `SESSION_SECRET` unless you want to override the database connection manually.
+The password `Ashu2406@$20` must be URL-encoded inside the connection string as `Ashu2406%40%2420`.
 
 ## 🎨 Design Features
 
@@ -250,6 +252,6 @@ This premium UI is ready for commercial use. Customize it for your travel busine
 
 For updates and support, customize the `/contact` page with your actual contact details.
 
-## Admin page 
-only admin can access it is a unique password only you can see and whom can control the website the access
-/admin/Ashu2406/login
+
+
+
