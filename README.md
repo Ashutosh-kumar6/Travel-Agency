@@ -250,8 +250,6 @@ This premium UI is ready for commercial use. Customize it for your travel busine
 
 For updates and support, customize the `/contact` page with your actual contact details.
 
-## Admin page 
-only admin can access it is a unique password only you can see and whom can control the website the access
-/admin/Ashu2406/login that can access all databases
+
 
 
