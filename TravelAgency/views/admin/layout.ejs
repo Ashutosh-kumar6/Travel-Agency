@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title ? `${title} - Admin Panel` : 'Admin Panel' %></title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/backend.css">
+    <link rel="stylesheet" href="/admin.css">
+</head>
+<body class="admin-body">
+    <div class="admin-shell">
+        <aside class="admin-sidebar">
+            <a href="/admin/Ashu2406/dashboard" class="admin-brand">Travel Admin</a>
+            <nav class="admin-nav">
+                <a href="/admin/Ashu2406/dashboard">Dashboard</a>
+                <a href="/admin/Ashu2406/dashboard#bookings">Bookings</a>
+                <a href="/admin/Ashu2406/dashboard#catalog">Food / Services / Rentals</a>
+                <a href="/admin/Ashu2406/dashboard#pages">Pages</a>
+                <a href="/destinations">View Website</a>
+                <% if (currentUser) { %>
+                    <a href="/logout">Logout</a>
+                <% } %>
+            </nav>
+        </aside>
+        <section class="admin-main">
+            <%- include('../partials/flash') %>
+            <%- body %>
+        </section>
+    </div>
+    <script src="/backend.js"></script>
+</body>
+</html>

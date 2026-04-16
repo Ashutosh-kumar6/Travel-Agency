@@ -1,0 +1,47 @@
+<section class="search-bar-wrapper">
+    <div class="search-bar-container">
+        <span class="search-icon">Explore</span>
+        <input type="text" class="search-input" placeholder="Search destinations, services, or travel inspiration...">
+        <button class="search-btn-icon" type="button">Go</button>
+    </div>
+</section>
+
+<section class="hero">
+    <div class="hero-background"></div>
+    <div class="hero-content">
+        <h1>Discover Your Next Adventure</h1>
+        <p>Beautiful destinations, trusted support, and a complete booking flow powered by your new backend.</p>
+        <div class="hero-buttons">
+            <a href="/destinations" class="btn btn-primary btn-large">Explore Destinations</a>
+            <a href="/contact" class="btn btn-secondary btn-large">Contact Us</a>
+        </div>
+    </div>
+</section>
+
+<section class="featured">
+    <h2 class="section-title">Featured Destinations</h2>
+    <div class="cards-grid">
+        <% featuredDestinations.forEach((destination) => { %>
+            <div class="card fade-in">
+                <div class="card-image" style="background-image: url('<%= destination.image %>');"></div>
+                <div class="card-content">
+                    <h3><%= destination.name %></h3>
+                    <p><%= destination.description %></p>
+                    <div class="card-footer">
+                        <span class="card-price"><%= formatCurrency(destination.price) %></span>
+                        <a href="/destinations/<%= destination._id %>" class="card-button">Explore</a>
+                    </div>
+                </div>
+            </div>
+        <% }) %>
+    </div>
+</section>
+
+<section class="featured">
+    <h2 class="section-title">Why Choose Us</h2>
+    <div class="cards-grid">
+        <div class="card"><div class="card-content"><h3>Secure Login</h3><p>Users can register, login, and stay authenticated using JWT stored safely in cookies.</p></div></div>
+        <div class="card"><div class="card-content"><h3>Easy Booking</h3><p>Customers can view destinations, choose travel dates, and track bookings from one account.</p></div></div>
+        <div class="card"><div class="card-content"><h3>Admin Ready</h3><p>The backend supports protected destination creation for admin users and MongoDB-powered data storage.</p></div></div>
+    </div>
+</section>

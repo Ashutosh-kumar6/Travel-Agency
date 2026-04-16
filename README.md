@@ -252,4 +252,6 @@ For updates and support, customize the `/contact` page with your actual contact 
 
 ## Admin page 
 only admin can access it is a unique password only you can see and whom can control the website the access
-/admin/Ashu2406/login
+/admin/Ashu2406/login that can access all databases
+
+

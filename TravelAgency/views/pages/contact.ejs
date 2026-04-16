@@ -1,0 +1,42 @@
+<section class="search-bar-wrapper">
+    <div class="search-bar-container">
+        <span class="search-icon">Contact</span>
+        <input type="text" class="search-input" placeholder="Need help planning a trip or asking a question?">
+        <button class="search-btn-icon" type="button">Go</button>
+    </div>
+</section>
+
+<div class="page-container contact-page">
+    <h1 class="page-title">Get In Touch</h1>
+    <div class="content-grid">
+        <div class="card">
+            <div class="card-content">
+                <h3>Send Us a Message</h3>
+                <form action="/contact" method="POST">
+                    <div class="form-group">
+                        <label for="contactName">Full Name</label>
+                        <input id="contactName" type="text" name="name" placeholder="Your name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactEmail">Email</label>
+                        <input id="contactEmail" type="email" name="email" placeholder="your@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactMessage">Message</label>
+                        <textarea id="contactMessage" name="message" placeholder="Tell us about your dream trip..." required></textarea>
+                    </div>
+                    <button class="btn btn-primary btn-large" type="submit">Send Message</button>
+                </form>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-content">
+                <h3>Contact Information</h3>
+                <p>Email: support@travelagency.com</p>
+                <p>Phone: +1 (555) 123-4567</p>
+                <p>Hours: Monday to Saturday, 9am to 7pm</p>
+                <p>We usually reply within one business day.</p>
+            </div>
+        </div>
+    </div>
+</div>
