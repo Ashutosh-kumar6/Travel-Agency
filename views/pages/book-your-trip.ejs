@@ -1,0 +1,52 @@
+<div class="booking-container">
+    <div class="booking-header">
+        <h1>Book Your Journey</h1>
+        <p>Select a destination, choose a date, and save your trip in MongoDB.</p>
+    </div>
+
+    <div class="page-container">
+        <div class="content-grid">
+            <div class="card">
+                <div class="card-content">
+                    <h3>Travel Booking Form</h3>
+                    <% if (!currentUser) { %>
+                        <p class="helper-text">You need an account before creating a booking.</p>
+                        <a href="/login" class="btn btn-secondary">Login First</a>
+                    <% } else { %>
+                        <form action="/booking" method="POST">
+                            <div class="form-group">
+                                <label for="destination">Destination</label>
+                                <select id="destination" name="destination" required>
+                                    <option value="">Select a destination</option>
+                                    <% destinations.forEach((item) => { %>
+                                        <option value="<%= item._id %>"><%= item.name %> - <%= item.location %> (<%= formatCurrency(item.price) %>)</option>
+                                    <% }) %>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="date">Travel Date</label>
+                                <input id="date" type="date" name="date" required>
+                            </div>
+                            <button class="btn btn-primary btn-large" type="submit">Create Booking</button>
+                        </form>
+                    <% } %>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-content">
+                    <h3>Popular Destinations</h3>
+                    <div class="simple-list">
+                        <% destinations.forEach((item) => { %>
+                            <div class="simple-list-item">
+                                <strong><%= item.name %></strong>
+                                <span><%= item.location %></span>
+                                <span><%= formatCurrency(item.price) %></span>
+                            </div>
+                        <% }) %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

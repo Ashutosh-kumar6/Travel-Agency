@@ -1,0 +1,32 @@
+<section class="search-bar-wrapper">
+    <div class="search-bar-container">
+        <span class="search-icon">Trips</span>
+        <input type="text" class="search-input" placeholder="Track your bookings and travel dates...">
+        <button class="search-btn-icon" type="button">Go</button>
+    </div>
+</section>
+
+<div class="page-container">
+    <h1 class="page-title">My Bookings</h1>
+    <% if (!bookings.length) { %>
+        <div class="card">
+            <div class="card-content">
+                <p>You have not booked any trips yet.</p>
+                <a href="/book-your-trip" class="btn btn-primary">Book Your First Trip</a>
+            </div>
+        </div>
+    <% } else { %>
+        <div class="cards-grid">
+            <% bookings.forEach((booking) => { %>
+                <div class="card">
+                    <div class="card-content">
+                        <h3><%= booking.destination.name %></h3>
+                        <p><strong>Location:</strong> <%= booking.destination.location %></p>
+                        <p><strong>Travel Date:</strong> <%= new Date(booking.date).toDateString() %></p>
+                        <p><strong>Status:</strong> <span class="status-pill"><%= booking.status %></span></p>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+    <% } %>
+</div>
