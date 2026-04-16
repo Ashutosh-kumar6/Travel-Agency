@@ -1,3 +1,4 @@
+const mongoose = require('mongoose');
 const Destination = require('../models/Destination');
 
 const defaultDestinations = [
@@ -32,6 +33,10 @@ const defaultDestinations = [
 ];
 
 const seedDestinations = async () => {
+    if (mongoose.connection.readyState !== 1) {
+        return;
+    }
+
     const destinationCount = await Destination.countDocuments();
 
     if (destinationCount === 0) {

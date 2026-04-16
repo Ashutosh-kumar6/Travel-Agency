@@ -9,10 +9,12 @@ The backend is configured for MongoDB Atlas via `MONGO_URI`.
 Add this to your `.env` file and replace `your-cluster.mongodb.net` with your actual Atlas cluster host:
 
 ```txt
-MONGO_URI=mongodb+srv://ashutoshkumar58724_db_user:Ashu2406%40%2420@your-cluster.mongodb.net/travelagency?retryWrites=true&w=majority&appName=Cluster0
+MONGO_URI=mongodb+srv://ashutoshkumar58724_db_user:W0pxYOpki3bqaCww@your-cluster.mongodb.net/travelagency?retryWrites=true&w=majority&appName=Cluster0
 ```
 
-The password `Ashu2406@$20` must be URL-encoded inside the connection string as `Ashu2406%40%2420`.
+The current password `W0pxYOpki3bqaCww` can be used directly in the connection string because it does not contain special URI characters.
+
+If you deploy on Render, also make sure MongoDB Atlas Network Access allows the Render service to connect. For quick testing, many setups use `0.0.0.0/0` in Atlas and then tighten it later.
 
 ## 🎨 Design Features
 
