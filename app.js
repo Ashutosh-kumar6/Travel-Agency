@@ -18,11 +18,32 @@ app.use(express.json());
 app.get('/', (req, res) => {
     res.send("Server is working ✅");
 });
-app.get('/contact', (req, res) => res.render('contact'));
+
+// ✅ Import routes
+const authRoutes = require('./routes/authRoutes');
+const bookingRoutes = require('./routes/bookingRoutes');
+const contactRoutes = require('./routes/contactRoutes');
+const destinationRoutes = require('./routes/destinationRoutes');
+const adminRoutes = require('./routes/adminRoutes');
+const pageRoutes = require('./routes/pageRoutes');
+
+// ✅ Use routes
+app.use('/auth', authRoutes);
+app.use('/booking', bookingRoutes);
+app.use('/contact', contactRoutes);
+app.use('/destination', destinationRoutes);
+app.use('/admin', adminRoutes);
+app.use('/pages', pageRoutes);
 
 // ✅ test route
 app.get('/test', (req, res) => {
   res.send("Working 🚀");
+});
+
+// ✅ Error handling middleware (IMPORTANT - catches crashes)
+app.use((err, req, res, next) => {
+    console.error('Error:', err.stack);
+    res.status(500).send("Something broke! " + err.message);
 });
 
 // ❌ REMOVE THIS:
