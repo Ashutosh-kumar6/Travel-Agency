@@ -2,9 +2,14 @@ const Destination = require('../models/Destination');
 const CatalogItem = require('../models/CatalogItem');
 const SitePage = require('../models/SitePage');
 const asyncHandler = require('../middleware/asyncHandler');
+const mongoose = require('mongoose');
+
+const isDbReady = () => mongoose.connection.readyState === 1;
 
 const renderHomePage = asyncHandler(async (req, res) => {
-    const featuredDestinations = await Destination.find().limit(3).sort({ createdAt: -1 });
+    const featuredDestinations = isDbReady()
+        ? await Destination.find().limit(3).sort({ createdAt: -1 })
+        : [];
 
     res.render('pages/home', {
         title: 'Home',
@@ -13,7 +18,7 @@ const renderHomePage = asyncHandler(async (req, res) => {
 });
 
 const renderBookingPage = asyncHandler(async (req, res) => {
-    const destinations = await Destination.find().sort({ name: 1 });
+    const destinations = isDbReady() ? await Destination.find().sort({ name: 1 }) : [];
 
     res.render('pages/book-your-trip', {
         title: 'Book Your Trip',
@@ -22,6 +27,12 @@ const renderBookingPage = asyncHandler(async (req, res) => {
 });
 
 const renderManagedPage = asyncHandler(async (req, res) => {
+    if (!isDbReady()) {
+        const error = new Error('This page is temporarily unavailable.');
+        error.statusCode = 503;
+        throw error;
+    }
+
     const page = await SitePage.findOne({ slug: req.params.slug, isPublished: true });
 
     if (!page) {
@@ -37,6 +48,10 @@ const renderManagedPage = asyncHandler(async (req, res) => {
 });
 
 const renderAboutPage = asyncHandler(async (req, res) => {
+    if (!isDbReady()) {
+        return res.render('pages/about', { title: 'About' });
+    }
+
     const page = await SitePage.findOne({ slug: 'about', isPublished: true });
 
     if (!page) {
@@ -51,7 +66,9 @@ const renderAboutPage = asyncHandler(async (req, res) => {
 
 const renderCatalogPage = (section, title, heading, searchPlaceholder) =>
     asyncHandler(async (req, res) => {
-        const items = await CatalogItem.find({ section, isPublished: true }).sort({ createdAt: -1 });
+        const items = isDbReady()
+            ? await CatalogItem.find({ section, isPublished: true }).sort({ createdAt: -1 })
+            : [];
 
         res.render('pages/catalog', {
             title,

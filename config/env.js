@@ -2,9 +2,13 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 
+const mongoUri = process.env.MONGO_URI || '';
+const hasMongoUri = Boolean(mongoUri) && !mongoUri.includes('your-cluster.mongodb.net');
+
 module.exports = {
     port: process.env.PORT || 3000,
-    mongoUri: process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/travelagency',
+    mongoUri,
+    hasMongoUri,
     jwtSecret: process.env.JWT_SECRET || 'travelagency-jwt-secret',
     sessionSecret: process.env.SESSION_SECRET || 'travelagency-session-secret',
     adminSetupKey: process.env.ADMIN_SETUP_KEY || 'travelagency-admin-key',

@@ -1,3 +1,4 @@
+const mongoose = require('mongoose');
 const CatalogItem = require('../models/CatalogItem');
 const SitePage = require('../models/SitePage');
 
@@ -81,6 +82,10 @@ const pageSeeds = [
 ];
 
 const seedContent = async () => {
+    if (mongoose.connection.readyState !== 1) {
+        return;
+    }
+
     const [catalogCount, pageCount] = await Promise.all([
         CatalogItem.countDocuments(),
         SitePage.countDocuments()
