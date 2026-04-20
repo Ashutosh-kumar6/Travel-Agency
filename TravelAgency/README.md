@@ -16,6 +16,16 @@ The current password `W0pxYOpki3bqaCww` can be used directly in the connection s
 
 If you deploy on Render, also make sure MongoDB Atlas Network Access allows the Render service to connect. For quick testing, many setups use `0.0.0.0/0` in Atlas and then tighten it later.
 
+## Project Layout
+
+The active project is now separated by responsibility:
+
+- `backend/` for Express server code
+- `frontend/` for EJS views and static assets
+- `database/` for MongoDB models
+- `deployment/` for deployment guidance
+- `legacy/` for old duplicated project files kept out of the active app path
+
 ## 🎨 Design Features
 
 ### **Premium Aesthetic**

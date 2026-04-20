@@ -1,0 +1,23 @@
+<section class="search-bar-wrapper">
+    <div class="search-bar-container">
+        <span class="search-icon">Detail</span>
+        <input type="text" class="search-input" placeholder="Viewing destination details...">
+        <button class="search-btn-icon" type="button">Go</button>
+    </div>
+</section>
+
+<div class="page-container">
+    <div class="card detail-card">
+        <div class="card-image detail-image" style="background-image: url('<%= destination.image %>');"></div>
+        <div class="card-content">
+            <h1 class="page-title"><%= destination.name %></h1>
+            <p><strong>Location:</strong> <%= destination.location %></p>
+            <p><strong>Price:</strong> <%= formatCurrency(destination.price) %></p>
+            <p><%= destination.description %></p>
+            <div class="hero-buttons">
+                <a href="/book-your-trip" class="btn btn-primary">Book This Destination</a>
+                <a href="/destinations" class="btn btn-secondary">Back to Destinations</a>
+            </div>
+        </div>
+    </div>
+</div>

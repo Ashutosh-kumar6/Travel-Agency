@@ -57,6 +57,4 @@ app.get('/bookYourTrip', (req, res) => {
 });
 
 // Start server
-app.listen(PORT, () => {
-    console.log(`🌍 Travel Agency Server running on http://localhost:${PORT}`);
-});
+module.exports = app;
