@@ -14,8 +14,10 @@ app.use(express.static(path.join(process.cwd(), 'public')));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// ✅ routes
-app.get('/', (req, res) => res.render('index'));
+// ✅ routes - TESTING BYPASS
+app.get('/', (req, res) => {
+    res.send("Server is working ✅");
+});
 app.get('/contact', (req, res) => res.render('contact'));
 
 // ✅ test route
