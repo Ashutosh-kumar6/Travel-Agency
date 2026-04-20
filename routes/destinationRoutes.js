@@ -8,9 +8,9 @@ const { protect, isAdmin } = require('../middleware/authMiddleware');
 
 const router = express.Router();
 
-router.get('/destination', getAllDestinations);
-router.get('/destinations', getAllDestinations);
-router.get('/destinations/:id', getDestinationDetails);
-router.post('/destinations', protect, isAdmin, createDestination);
+router.get('/', getAllDestinations);
+router.get('/all', getAllDestinations);
+router.get('/:id', getDestinationDetails);
+router.post('/', protect, isAdmin, createDestination);
 
 module.exports = router;

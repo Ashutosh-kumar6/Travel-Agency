@@ -48,7 +48,7 @@ app.use('/admin', adminRoutes);
 app.use('/booking', bookingRoutes);
 app.use('/contact', contactRoutes);
 app.use('/destination', destinationRoutes);
-app.use('/pages', pageRoutes);
+app.use('/', pageRoutes);  // Core pages at root level
 
 // ✅ test route
 app.get('/test', (req, res) => {
