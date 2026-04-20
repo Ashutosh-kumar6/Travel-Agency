@@ -1,2 +1,3 @@
-const app = require('../app'); // or your file name
+const app = require('../app');
+
 module.exports = app;
